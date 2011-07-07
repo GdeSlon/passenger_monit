@@ -2,7 +2,7 @@ PassengerMonit
 ==============
 
 This plugin provides means for monitoring Rails application which run under [Passenger][1]
-with [Monit][2].
+with [Monit][2] for Rails 2.3
 
 The pid file name (hardcoded) is /var/tmp/rack.X.pid, where X denotes
 the instance number.
@@ -13,9 +13,16 @@ the instance number.
 Installation
 ============
 
-Add this line to your Gemfile:
+Add this line to your evironment.rb:
 
-    gem 'passenger_monit', :group => :production
+
+    Rails::Initializer.run do |config|
+      ...
+      config.gem 'passenger_monit'
+      ...
+    end
+    PassengerMonit.init
+
 
 Example Monit configuration
 ===========================
